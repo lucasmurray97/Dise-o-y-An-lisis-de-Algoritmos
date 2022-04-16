@@ -1,3 +1,5 @@
+import numpy as np
+import time
 def multGF28(p1, p2):
     """Multiplicación en GF(2^8)"""
     p = 0
@@ -10,3 +12,14 @@ def multGF28(p1, p2):
         p2 >>= 1
     return p & 0b11111111
 
+def rand_matrix(dim):
+  """Genera una matriz cuadrada de dimension dim con valores aleatorios en GF(2^8).""" 
+  return np.random.randint(256, size=(dim, dim))
+import time
+
+def time_me(f, *args):
+  """Mide el tiempo de ejecución de `f` con los argumentos `*args`."""
+  start = time.perf_counter()
+  f(*args)
+  end = time.perf_counter()
+  return end - start
